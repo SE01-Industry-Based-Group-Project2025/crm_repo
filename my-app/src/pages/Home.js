@@ -19,7 +19,7 @@ function Home() {
         {/* Centered content */}
         <div className="flex flex-col items-center justify-center h-[80vh] text-center">
           <h1 className="text-5xl font-extrabold text-blue-600 dark:text-blue-300 mb-6">
-            Welcome to the Home Page
+            Welcome to CRM Home Page
           </h1>
           <p className="text-lg max-w-xl">
             This is your main landing page built with <strong>React</strong> and styled with <strong>Tailwind CSS</strong>.
