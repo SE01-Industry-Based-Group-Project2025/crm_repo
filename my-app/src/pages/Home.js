@@ -30,10 +30,12 @@ function Home() {
           </a>
         </header>
 
-        {/* Centered content */}
-        <div className="flex flex-col items-center justify-center h-[80vh] text-center">
-          <h1 className="text-5xl font-extrabold text-blue-600 dark:text-blue-300 mb-6">
-            Welcome to CRM Home Page
+        {/* Hero Section */}
+        <section className="flex-grow flex flex-col justify-center items-center text-center text-white fade-in-up delay-200">
+          <h1 className="text-4xl md:text-5xl font-semibold leading-tight mb-4 drop-shadow-xl">
+            Act Beyond Data, Engage
+            <br />
+            Beyond Distance
           </h1>
           <p className="text-lg drop-shadow-sm max-w-xl mb-10 fade-in-up delay-300">
             We don’t just track customers, we empower connections.
