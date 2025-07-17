@@ -1,6 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { LineChart, Line, XAxis, YAxis, Tooltip, CartesianGrid, ResponsiveContainer } from "recharts";
 
 const Dashboard = ({ customerList = [], message = "", onDelete }) => {
+  // Real-time stats example
+  const [liveCount, setLiveCount] = useState(customerList.length);
+  const [chartData, setChartData] = useState([
+    { name: "Jan", customers: 10 },
+    { name: "Feb", customers: 15 },
+    { name: "Mar", customers: 20 },
+    { name: "Apr", customers: 25 },
+    { name: "May", customers: 30 },
+    { name: "Jun", customers: 40 },
+  ]);
+
+  // Simulate real-time updates
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLiveCount((prev) => prev + Math.floor(Math.random() * 3 - 1)); // Randomly add/remove
+      setChartData((prev) => [
+        ...prev.slice(1),
+        { name: "Now", customers: liveCount + Math.floor(Math.random() * 5) },
+      ]);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [liveCount]);
+
   // confirm delete function
   const confirmDelete = (id) => {
     if (window.confirm("Are you sure you want to delete this customer?")) {
@@ -47,6 +71,26 @@ const Dashboard = ({ customerList = [], message = "", onDelete }) => {
               <p>{message}</p>
             </div>
           )}
+        </div>
+
+        {/* Real-time stats and chart */}
+        <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-8">
+          <div className="bg-white rounded-lg shadow p-6 flex-1 flex flex-col items-center">
+            <span className="text-2xl font-bold text-blue-600">Live Customers</span>
+            <span className="text-4xl font-extrabold mt-2">{liveCount}</span>
+          </div>
+          <div className="bg-white rounded-lg shadow p-6 flex-[2]">
+            <span className="text-lg font-semibold text-gray-700">Customer Growth</span>
+            <ResponsiveContainer width="100%" height={200}>
+              <LineChart data={chartData}>
+                <CartesianGrid strokeDasharray="3 3" />
+                <XAxis dataKey="name" />
+                <YAxis />
+                <Tooltip />
+                <Line type="monotone" dataKey="customers" stroke="#8884d8" strokeWidth={2} />
+              </LineChart>
+            </ResponsiveContainer>
+          </div>
         </div>
 
         <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">

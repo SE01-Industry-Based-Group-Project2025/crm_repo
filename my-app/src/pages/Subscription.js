@@ -65,7 +65,7 @@ const Subscription = () => {
               highlight: true,
             },
             {
-              title: 'Business Plan',
+              title: 'Platinum Plan',
               price: 'Rs. 10,000/month',
               features: ['All Pro features', '24/7 Support', 'Unlimited users'],
             },

@@ -8,10 +8,9 @@ function Signup() {
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [role, setRole] = useState('');
+  const [plan, setPlan] = useState(''); // Plan state
   const [message, setMessage] = useState('');
-const [showPassword, setShowPassword] = useState(false);
-
-
+  const [showPassword, setShowPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -32,7 +31,8 @@ const [showPassword, setShowPassword] = useState(false);
           lastName: lName,
           email,
           password,
-          role
+          role,
+          plan // Send plan to backend
         }),
       });
 
@@ -101,8 +101,6 @@ const [showPassword, setShowPassword] = useState(false);
           required
         />
 
-
-
           <select
             value={role}
             onChange={(e) => setRole(e.target.value)}
@@ -112,6 +110,19 @@ const [showPassword, setShowPassword] = useState(false);
             <option value="TEACHER">TEACHER</option>
             <option value="BUSINESSMAN">BUSINESSMAN</option>
             {/* <option value="ADMIN">ADMIN</option> */}
+          </select>
+
+          {/* Plan Dropdown */}
+          <select
+            value={plan}
+            onChange={(e) => setPlan(e.target.value)}
+            className="w-full px-4 py-2 border border-gray-300 rounded bg-white focus:outline-none focus:ring-2 focus:ring-purple-400 transition"
+            required
+          >
+            <option value="" disabled>--Select a Plan--</option>
+            <option value="BASIC">BASIC</option>
+            <option value="PRO">PRO</option>
+            <option value="BUSINESS">BUSINESS</option>
           </select>
 
       {/* Show Password Toggle */}
@@ -127,10 +138,6 @@ const [showPassword, setShowPassword] = useState(false);
     Show Password
   </label>
 </div>
-
-
-
-
 
           <button
             type="submit"
