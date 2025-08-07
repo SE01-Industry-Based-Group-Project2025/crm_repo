@@ -13,6 +13,9 @@ import Login from './pages/Login';
 // import Navbar from './components/Navbar'; // 👈 Navbar import is commented out
 import Profile from './pages/profile';
 import ChatBotWrapper from './components/ChatBotWrapper';
+import Dashboard from './pages/Dashboard'; // adjust path as needed
+import TeacherDashboard from './pages/Dashboard/TeacherDashboard';
+import BusinessDashboard from './pages/Dashboard/BusinessDashboard';
 
 
 function AppContent() {
@@ -38,6 +41,9 @@ function AppContent() {
         <Route path="/signup" element={<Signup />} /> 
         <Route path="/profile" element={<Profile />} />
         <Route path="/subscription" element={<Subscription />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
+        <Route path="/business-dashboard" element={<BusinessDashboard />} />
       </Routes>
     </>
   );
