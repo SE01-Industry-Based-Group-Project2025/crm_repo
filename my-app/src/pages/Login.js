@@ -11,13 +11,6 @@ function Login() {
 
   const handleLogin = async (e) => {
   e.preventDefault();
-
-  if (email === "admin1@gmail.com" && password === "admin01") {
-    // Redirect to backend-served Thymeleaf home.html
-    window.location.href = "http://localhost:8083/";
-    return;
-  }
-
   try {
     const response = await fetch("http://localhost:8083/api/login", {
       method: "POST",
@@ -25,14 +18,16 @@ function Login() {
       body: JSON.stringify({ email, password }),
     });
 
-    const data = await response.text();
-    const trimmedData = data.trim().toLowerCase();
-    setMessage(data);
+    const data = await response.json();
+    setMessage(data.message);
 
-    if (trimmedData === "login successful") {
-      setTimeout(() => navigate('/profile'), 1500);
+    if (data.message && data.message.toLowerCase().includes("successful")) {
+      if (data.role === "TEACHER") {
+        navigate(`/teacher-dashboard?id=${data.id}`);
+      } else if (data.role === "BUSINESSMAN") {
+        navigate(`/business-dashboard?id=${data.id}`);
+      }
     }
-
   } catch (error) {
     setMessage("Login failed.");
   }
