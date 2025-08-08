@@ -11,6 +11,13 @@ function Login() {
 
   const handleLogin = async (e) => {
   e.preventDefault();
+
+   if (email === "admin1@gmail.com" && password === "admin01") {
+    // Redirect to backend-served Thymeleaf home.html
+    window.location.href = "http://localhost:8083/";
+    return;
+  }
+
   try {
     const response = await fetch("http://localhost:8083/api/login", {
       method: "POST",
