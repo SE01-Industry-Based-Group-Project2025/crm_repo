@@ -5,39 +5,46 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
-  const [showPassword, setShowPassword] = useState(false); // 👈
+  const [showPassword, setShowPassword] = useState(false); 
 
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  if (email === "admin1@gmail.com" && password === "admin01") {
-    // Redirect to backend-served Thymeleaf home.html
-    window.location.href = "http://localhost:8083/";
-    return;
-  }
-
-  try {
-    const response = await fetch("http://localhost:8083/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
-    });
-
-    const data = await response.text();
-    const trimmedData = data.trim().toLowerCase();
-    setMessage(data);
-
-    if (trimmedData === "login successful") {
-      setTimeout(() => navigate('/profile'), 1500);
+    // Admin 1 Login
+    if (email === "admin1@gmail.com" && password === "admin01") {
+      window.location.href = "http://localhost:8083/";
+      return;
     }
 
-  } catch (error) {
-    setMessage("Login failed.");
-  }
-};
+    // Admin 2 Login → Subscription CRUD
+    else if (email === "admin2@gmail.com" && password === "admin02") {
+      window.location.href = "/customers"; // Make sure this route exists in your frontend routes
+      return;
+    }
 
+    try {
+      const response = await fetch("http://localhost:8083/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await response.json();
+      setMessage(data.message);
+
+      if (data.message && data.message.toLowerCase().includes("successful")) {
+        if (data.role === "TEACHER") {
+          navigate(`/teacher-dashboard?id=${data.id}`);
+        } else if (data.role === "BUSINESSMAN") {
+          navigate(`/business-dashboard?id=${data.id}`);
+        }
+      }
+    } catch (error) {
+      setMessage("Login failed.");
+    }
+  };
 
   return (
     <div className="flex min-h-screen">

@@ -9,7 +9,7 @@ const CustomerDetails = ({ customer = {} }) => {
             <div className="flex items-center">
               <div className="shrink-0">
                 <img
-                  src="/img/genetic-data.svg"
+                  src="dashboard.png"
                   className="size-8"
                   alt="Your Company"
                 />

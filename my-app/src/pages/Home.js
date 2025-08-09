@@ -3,6 +3,7 @@ import DarkModeToggle from '../components/DarkModeToggle';
 import Subscription from './Subscription';
 import About from './About';
 import Contact from './Contact';
+import ColorfulTypewriter from "../components/ColorfulTypewriter";
 
 function Home() {
   return (
@@ -31,18 +32,18 @@ function Home() {
         </header>
 
         {/* Hero Section */}
-        <section className="flex-grow flex flex-col justify-center items-center text-center text-white fade-in-up delay-200">
-          <h1 className="text-4xl md:text-5xl font-semibold leading-tight mb-4 drop-shadow-xl">
-            Act Beyond Data, Engage
-            <br />
-            Beyond Distance
-          </h1>
-          <p className="text-lg drop-shadow-sm max-w-xl mb-10 fade-in-up delay-300">
+        <section className="flex-grow flex flex-col justify-center items-center text-center text-white">
+
+          {/* Replaced typewriter heading with ColorfulTypewriter component */}
+          <ColorfulTypewriter text={"Connect smarter, grow faster."} />
+
+          {/* Fade-in Paragraph */}
+          <p className="text-lg drop-shadow-sm max-w-xl mb-10 mt-8 opacity-0 animate-fade-in-up delay-1000 whitespace-pre-line">
             We don’t just track customers, we empower connections.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-6 fade-in-up delay-400">
+          <div className="flex flex-col sm:flex-row gap-20 fade-in-up delay-400">
             <a href="#" className="flex items-center justify-center gap-2 border-2 border-white px-6 py-3 rounded-full text-white font-semibold text-base hover:bg-white hover:text-[#0c3a5d] transition duration-300">
               <i className="fas fa-map-marker-alt"></i> Plan your project
             </a>

@@ -14,6 +14,8 @@ import Login from './pages/Login';
 import Profile from './pages/profile';
 import ChatBotWrapper from './components/ChatBotWrapper';
 
+// ✅ Import the new Customers CRUD component
+import CustomersCRUDApp from './CustomersCRUDApp';
 
 function AppContent() {
   const location = useLocation();
@@ -38,6 +40,9 @@ function AppContent() {
         <Route path="/signup" element={<Signup />} /> 
         <Route path="/profile" element={<Profile />} />
         <Route path="/subscription" element={<Subscription />} />
+
+        {/* ✅ New route for Customers CRUD */}
+        <Route path="/customers" element={<CustomersCRUDApp />} />
       </Routes>
     </>
   );

@@ -42,7 +42,7 @@ const CustomerForm = ({ customer = {}, onSubmit }) => {
           <div className="flex h-16 items-center justify-between">
             <div className="flex items-center">
               <div className="shrink-0">
-                <img src="/img/pen.svg" alt="Your Company" className="size-8" />
+                <img src="/genetic-data.svg.ico" alt="Your Company" className="size-8" />
               </div>
               <div className="hidden md:block">
                 <div className="ml-10 flex items-baseline space-x-4">
