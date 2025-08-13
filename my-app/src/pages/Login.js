@@ -19,7 +19,7 @@ function Login() {
   }
 
   try {
-    const response = await fetch("http://localhost:8083/api/login", {
+  const response = await fetch("http://localhost:8081/api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
@@ -30,7 +30,23 @@ function Login() {
     setMessage(data);
 
     if (trimmedData === "login successful") {
-      setTimeout(() => navigate('/profile'), 1500);
+      // Fetch user info (simulate or fetch from backend if available)
+      // For demo, assume backend returns user info in a real app
+      // Here, just store email as name and role as TEACHER for demo
+      localStorage.setItem('userName', email);
+      // TODO: Replace with real role from backend
+      localStorage.setItem('userRole', 'TEACHER');
+      // Redirect based on role
+      setTimeout(() => {
+        const role = localStorage.getItem('userRole');
+        if (role === 'TEACHER') {
+          navigate('/teacher-dashboard');
+        } else if (role === 'BUSINESSMAN') {
+          navigate('/professional-dashboard');
+        } else {
+          navigate('/profile');
+        }
+      }, 1000);
     }
 
   } catch (error) {

@@ -23,7 +23,7 @@ function Signup() {
     }
 
     try {
-      const response = await fetch("http://localhost:8083/api/signup", {
+  const response = await fetch("http://localhost:8081/api/signup", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -40,7 +40,17 @@ function Signup() {
       setMessage(data);
 
       if (data === "User registered successfully") {
-        setTimeout(() => navigate("/login"), 1500);
+        // Save user info in localStorage
+        localStorage.setItem('userName', fName + ' ' + lName);
+        localStorage.setItem('userRole', role);
+        // Redirect to dashboard based on role
+        if (role === 'TEACHER') {
+          setTimeout(() => navigate('/teacher-dashboard-pro'), 1000);
+        } else if (role === 'BUSINESSMAN') {
+          setTimeout(() => navigate('/professional-dashboard'), 1000);
+        } else {
+          setTimeout(() => navigate('/profile'), 1000);
+        }
       }
     } catch (error) {
       setMessage("Signup failed.");
