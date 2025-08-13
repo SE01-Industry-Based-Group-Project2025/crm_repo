@@ -44,8 +44,8 @@ function Home() {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-20 fade-in-up delay-400">
-            <a href="#" className="flex items-center justify-center gap-2 border-2 border-white px-6 py-3 rounded-full text-white font-semibold text-base hover:bg-white hover:text-[#0c3a5d] transition duration-300">
-              <i className="fas fa-map-marker-alt"></i> Plan your project
+            <a href="https://zoom.us/join" className="flex items-center justify-center gap-2 border-2 border-white px-6 py-3 rounded-full text-white font-semibold text-base hover:bg-white hover:text-[#0c3a5d] transition duration-300">
+              <i className="fas fa-map-marker-alt"></i> Plan your meeting
             </a>
             <a href="#" className="flex items-center justify-center gap-2 border-2 border-white px-6 py-3 rounded-full text-white font-semibold text-base hover:bg-white hover:text-[#0c3a5d] transition duration-300">
               <i className="fas fa-comments"></i> Connect with us
