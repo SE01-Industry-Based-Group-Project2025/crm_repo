@@ -77,7 +77,7 @@ export default function CustomersCRUDForm({ onSave, editingCustomer, setEditingC
         >
           <option value="" disabled>Select Role</option>
           <option value="teacher">Teacher</option>
-          <option value="business man">Businessman</option>
+          <option value="businessman">Businessman</option>
         </select>
 
         <select
